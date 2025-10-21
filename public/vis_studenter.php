@@ -1,10 +1,10 @@
-<?php  /* vis-alle-poststeder */
-/*
+<?php  /* vis-alle-poststeder */ 
+/* Fra team 5 eks 1
 /*  Programmet skriver ut alle registrerte poststeder
 */
   include("db.php");  /* tilkobling til database-serveren utf�rt og valg av database foretatt */
 
-  $sqlSetning="SELECT * FROM poststed;";
+  $sqlSetning="SELECT * FROM student;";
   
   $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
     /* SQL-setning sendt til database-serveren */
