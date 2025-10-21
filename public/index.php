@@ -1,4 +1,4 @@
 <?php
-echo "<h1>Hei! Dokploy finner nå index.php 🎉</h1>";
+echo "<h1>Hei fra Dokploy 👋</h1>";
 ?>
 
