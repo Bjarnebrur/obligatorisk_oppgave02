@@ -1,16 +1,17 @@
-# Bruk PHP med innebygd webserver
 FROM php:8.2-cli
 
-# Sett arbeidsmappe
 WORKDIR /app
 
-# Kopier alle filene i public-mappen inn i containeren
-COPY public/ /app
+# Kopier alt (ikke bare public/) slik at PHP faktisk finner filene
+COPY . /app
 
-# Eksponer port 80 (Dokploy bruker denne)
+# Pass på at public-mappen faktisk finnes
+RUN mkdir -p /app/public
+
+# Eksponer port 80 for Dokploy
 EXPOSE 80
 
-# Start innebygd PHP-server når containeren starter
-CMD ["php", "-S", "0.0.0.0:80", "-t", "/app"]
+# Start PHP-serveren, og pek eksplisitt på public/
+CMD ["php", "-S", "0.0.0.0:80", "-t", "/app/public"]
 
 
