@@ -1,8 +1,8 @@
-FROM php:8.2-apache
+FROM php:8.2-cli
 
-# Installer MySQLi-utvidelse slik at PHP kan snakke med databasen
-RUN docker-php-ext-install mysqli
+WORKDIR /app
+COPY public/ /app
 
-COPY public/ /var/www/html/
-
+CMD ["php", "-S", "0.0.0.0:80", "-t", "/app"]
 EXPOSE 80
+
