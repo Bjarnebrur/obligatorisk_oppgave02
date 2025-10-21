@@ -1,0 +1,1 @@
+<script src="funksjoner.js"></script>
