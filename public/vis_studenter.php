@@ -4,7 +4,7 @@
 */
   include("db.php");  /* tilkobling til database-serveren utf�rt og valg av database foretatt */
 
-  $sqlSetning="SELECT * FROM student;";
+  $sqlSetning="SELECT * FROM student;"; /* velger databasen i mysql */
   
   $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
     /* SQL-setning sendt til database-serveren */
@@ -18,7 +18,7 @@
   for ($r=1;$r<=$antallRader;$r++)
     {
       $rad=mysqli_fetch_array($sqlResultat);  /* ny rad hentet fra sp�rringsresultatet */
-      $postnr=$rad["postnr"];        /* ELLER $postnr=$rad[0]; */
+      $postnr=$rad["student"];        /* ELLER $postnr=$rad[0]; */
       $poststed=$rad["poststed"];    /* ELLER $poststed=$rad[1]; */
 
       print ("<tr> <td> $postnr </td> <td> $poststed </td> </tr>");
