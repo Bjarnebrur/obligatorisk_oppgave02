@@ -1,1 +1,1 @@
-<script src="funksjoner.js"></script>
+<script src="funksjoner.js"></script> 
