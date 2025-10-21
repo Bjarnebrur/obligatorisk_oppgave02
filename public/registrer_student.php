@@ -1,6 +1,6 @@
 <?php  
     include ("db.php"); /*kobler opp mot databasen*/
-   if (isfet($_POST["submit"])) { /* Denne koden sjekker om vi har sendt inn et skjema */ /**/ 
+   if (isset($_POST["submit"])) { /* Denne koden sjekker om vi har sendt inn et skjema */ /**/ 
     $brukernavn=$_POST["brukernavn"]; /* det bruker skriver blir lagret her*/
     $fornavn = $_POST["fornavn"];
     $etternavn = $_POST["etternavn"];
