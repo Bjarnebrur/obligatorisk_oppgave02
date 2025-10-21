@@ -1,12 +1,13 @@
-<?php
-$host = "mysql";        // Dokploy bruker ofte "mysql" eller "db" som hostname
-$user = "root";         // Bytt til ditt brukernavn hvis oppgitt
-$pass = "rootpass";     // Sett riktig passord
-$db   = "obligatorisk"; // Ditt databasenavn
+<?php  /* db-tilkobling */
+/*
+/*  Programmet foretar tilkobling til database-server og valg av database
+*/
+$host = getenv('DB_HOST');
+$username = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
+$database = getenv('DB_DATABASE');
 
-$conn = new mysqli($host, $user, $pass, $db);
+ $db=mysqli_connect($host,$username,$password,$database) or die ("ikke kontakt med database-server");
+    /* tilkobling til database-serveren utført */
+ ?>
 
-if ($conn->connect_error) {
-    die("Feil ved tilkobling: " . $conn->connect_error);
-}
-?>
