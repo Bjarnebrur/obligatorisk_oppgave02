@@ -1,6 +1,6 @@
 <?php  
     include ("db.php"); /*kobler opp mot databasen*/
-    if(issit($_POST["submit"])){} /*sjekker om vi har sendt inn ett skjema*/
+    /*sjekker om vi har sendt inn ett skjema*/
 
 
 ?>
