@@ -18,13 +18,13 @@
         <label>Brukenavn:</label><br>
         <input type="text" name="brukernavn"><br><br>
 
-        <label>Brukenavn:</label><br>
+        <label>Fornavn:</label><br>
         <input type="text" name="fornavn"><br><br>
 
-        <label>Brukenavn:</label><br>
+        <label>Etternavn:</label><br>
         <input type="text" name="etternavn"><br><br>
 
-        <label>Brukenavn:</label><br>
+        <label>Klassekode:</label><br>
         <input type="text" name="klassekode"><br><br>
 
         <input type="submit" name="submit" value="Registrer student">
