@@ -1,19 +1,26 @@
-<?php include "db.php"; ?>
-<!DOCTYPE html>
-<html lang="no">
-<head><meta charset="UTF-8"><title>Vis klasser</title></head>
-<body>
-<h3>Alle klasser</h3>
+<?php  
 
-<table border="1">
-<tr><th>Kode</th><th>Navn</th><th>Studium</th></tr>
+  include("db.php"); 
 
-<?php
-$result = $conn->query("SELECT * FROM klasse");
-while($row = $result->fetch_assoc()) {
-  echo "<tr><td>{$row['klassekode']}</td><td>{$row['klassenavn']}</td><td>{$row['studiumkode']}</td></tr>";
-}
+  $sqlSetning="SELECT * FROM klasser;";
+  
+  $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
+  
+	
+  $antallRader=mysqli_num_rows($sqlResultat);  
+
+  print ("<h3>Registrerte klasser</h3>");
+  print ("<table border=1>");  
+  print ("<tr><th align=left>klassekode</th> <th align=left>klassenavn</th>  <th align=left>studiumkode</th></tr>"); 
+ 
+  for ($r=1;$r<=$antallRader;$r++)
+    {
+      $rad=mysqli_fetch_array($sqlResultat);
+      $klassekode=$rad["klassekode"];       
+      $klassenavn=$rad["klassenavn"];    
+      $studiumkode=$rad["studiumkode"]; 
+
+      print ("<tr> <td> $klassekode </td> <td> $klassenavn </td> <td> $studiumkode </td> </tr>");
+    }
+  print ("</table>"); 
 ?>
-</table>
-</body>
-</html>
