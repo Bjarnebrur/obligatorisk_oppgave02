@@ -1,5 +1,3 @@
-redigere registrer studie til å passe til klasse 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,17 +20,17 @@ redigere registrer studie til å passe til klasse
 
 <?php 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") { 
-    include("db.php"); /* kobler opp mot databasen*/ 
+if ($_SERVER["REQUEST_METHOD"] == "POST") { /*sjekker at skejma er sendt inn, nettleser sender data til serveren med POST metoden */ 
+    include("db.php"); /* kobler opp mot databasen - db.php*/ 
 
-$klassekode = $_POST['klassekode'];
+$klassekode = $_POST['klassekode']; /*henter verdien som blir skrevet i input feltet med name="" i html skjemaet */
 $klassenavn = $_POST['klassenavn'];
 $studiumkode = $_POST['studiumkode'];
 
-$sql = "INSERT INTO klasse (klassekode, klassenavn, studiumkode)
+$sql = "INSERT INTO klasse (klassekode, klassenavn, studiumkode) /*sql-spørring til databasen om å legge til ny rad   */
     VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
 
-if ($conn->query($sql)) {
+if ($conn->query($sql)) { /*sql-spørring som sier til databasen at den skal legge inn en ny rad i tabellen */
    echo "<p>Du har registrert klasse <strong>$klassenavn</strong> (klassekode) for studiumkode <strong>$studiumkode<strong>.</p>";
 }   else {
     echo "<p> Feil ved registrering:" . $conn->error . "</p>";
