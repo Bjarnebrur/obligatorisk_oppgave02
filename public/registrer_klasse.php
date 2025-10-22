@@ -16,6 +16,7 @@ redigere registrer studie til å passe til klasse
     <input type="reset" value="Nullstill" name="nullstill" id="nullstill" /> <br />
 
     </form>
+    <p><a href="index.php">Tilbake til hovedmeny</a></p>
 </body>
 </html>
 
