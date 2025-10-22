@@ -33,7 +33,7 @@ $sqlHentklasse="SELECT * FROM klasse WHERE klassekode='$klassekode';"; /* SELECT
      if ($antallRader!=0) {/*sjekker at antall rader ikke er 0, klasse med samme klassekode */
         echo "<p style='color:red;'>Klassen finnes allerede!</p>";
  }  else {
-    $sqlInsert = "INSERT INTO klasse (klassekode, klassenavn, studiumkode) /*sql-spørring til databasen om å legge til ny rad, legger inn i database sql, gir verdi til $sql variabel */
+    $sqlInsert = "INSERT INTO klasse (klassekode, klassenavn, studiumkode) /*sql-spørring til databasen om å legge til ny rad, legger inn i database sql, gir verdi til sql variabel */
         VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
 
          mysqli_query($db,$sqlInsert) or die ("ikke mulig &aring; hente data fra databasen"); /*Kjører spørringen med query, mys_querry gjør at sql spørringen blir lagt til i databasen */
