@@ -8,11 +8,11 @@
 <?php
   if (isset($_POST ["slettklasseknapp"]))
     {	
-      $klassenummer=$_POST ["klassenummer"];
+      $klassekode=$_POST ["klassekode"];
 	  
-	  if (!$klassenummer)
+	  if (!$klassekode)
         {
-          print ("klassenummer m&aring; mangler");
+          print ("klassekode m&aring; mangler");
         }
       else
         {
