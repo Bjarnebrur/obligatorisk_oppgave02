@@ -2,7 +2,7 @@
 
   include("db.php"); 
 
-  $sqlSetning="SELECT * FROM klasser;";
+  $sqlSetning="SELECT * FROM klasse;";
   
   $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
   
