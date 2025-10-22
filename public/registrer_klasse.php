@@ -37,9 +37,9 @@ $sqlHentklasse="SELECT * FROM klasse WHERE klassekode='$klassekode';"; /* SELECT
         VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
 
          mysqli_query($db,$sqlInsert) or die ("ikke mulig &aring; hente data fra databasen"); /*Kjører spørringen med query, mys_querry gjør at sql spørringen blir lagt til i databasen */
-        echo "<p style='color:red;'>Klassen er lagret!</p>";
+        echo "<p style='color:green;'>Klassen er lagret!</p>";
 }
-       
+     mysqli_close($db); /*lukker databasen */
 }
 
 ?>
