@@ -1,4 +1,4 @@
-<h3>Slett klasse</h3>
+<h3>Slett klasse</h3> <!-- Student må slettes før man kan slette klassekode, om noen studenter er påmeldt klassen -->
 
 <form method="post" action="" id="slettklasseskjema" name="slettklasseskjema" onSubmit="return bekreft()">
   Klasskode <input type="text" id="klassekode" name="klassekode" required /> <br/>
