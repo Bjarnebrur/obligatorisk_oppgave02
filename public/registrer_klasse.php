@@ -20,22 +20,26 @@
 
 <?php 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") { /*sjekker at skejma er sendt inn, nettleser sender data til serveren med POST metoden */ 
+if ($_SERVER["REQUEST_METHOD"] == "POST") { /*sjekker at skejma er sendt inn, nettleser sender data til serveren (mysql,tabellen) med POST metoden */ 
     include("db.php"); /* kobler opp mot databasen - db.php*/ 
 
-$klassekode = $_POST['klassekode']; /*henter verdien som blir skrevet i input feltet med name="" i html skjemaet */
+$klassekode = $_POST['klassekode']; /*henter verdien som blir skrevet i input feltet med name="" i html skjemaet. Dataen du skriver i input blir lagret i variabelen*/
 $klassenavn = $_POST['klassenavn'];
 $studiumkode = $_POST['studiumkode'];
+    
+$sqlHentklasse="SELECT * FROM klasse WHERE klassekode='$klassekode';"; /* SELECT * From velger tabell fra mysql databasen, WHERE filtrerer - henter alt som stemmer med innsendt klassekode */
+   $sqlResultat=mysqli_query($db,$sqlHentklasse) or die ("ikke mulig &aring; hente data fra databasen"); /* kjører spørringen over - sqlsetning, om det finnes klassekode fra*/
+     $antallRader=mysqli_num_rows($sqlResultat); /*lagrer at vi har hentet antall rader, */
+     if ($antallRader!=0) {/*sjekker at antall rader ikke er 0, klasse med samme klassekode */
+        echo "<p style='color:red;'>Klassen finnes allerede!</p>";
+ }  else {
+    $sqlInsert = "INSERT INTO klasse (klassekode, klassenavn, studiumkode) /*sql-spørring til databasen om å legge til ny rad, legger inn i database sql, gir verdi til $sql variabel */
+        VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
 
-$sql = "INSERT INTO klasse (klassekode, klassenavn, studiumkode) /*sql-spørring til databasen om å legge til ny rad   */
-    VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
-
-if ($conn->query($sql)) { /*sql-spørring som sier til databasen at den skal legge inn en ny rad i tabellen */
-   echo "<p>Du har registrert klasse <strong>$klassenavn</strong> (klassekode) for studiumkode <strong>$studiumkode<strong>.</p>";
-}   else {
-    echo "<p> Feil ved registrering:" . $conn->error . "</p>";
+         mysqli_query($db,$sqlInsert) or die ("ikke mulig &aring; hente data fra databasen"); /*Kjører spørringen med query, mys_querry gjør at sql spørringen blir lagt til i databasen */
+        echo "<p style='color:red;'>Klassen er lagret!</p>";
 }
-$conn->close();
+       
 }
 
 ?>

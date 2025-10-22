@@ -10,6 +10,8 @@
     / SQL-setning sendt til database-serveren /
 
   $antallRader=mysqli_num_rows($sqlResultat);  / antall rader i resultatet beregnet */
+
+  /*SELECT * FROM */
 ?>
 
 <!DOCTYPE html>
