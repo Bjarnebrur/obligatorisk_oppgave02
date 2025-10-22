@@ -22,13 +22,23 @@ redigere registrer studie til å passe til klasse
 
 <?php 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") { 
+    include("db.php"); /* kobler opp mot databasen*/ 
+
 $klassekode = $_POST['klassekode'];
 $klassenavn = $_POST['klassenavn'];
 $studiumkode = $_POST['studiumkode'];
 
-echo "<p>Du har registrert klasse <strong>$klassenavn</strong> (klassekode) for studiumkode <strong>$studiumkode<strong>.</p>";
+$sql = "INSERT INTO klasse (klassekode, klassenavn, studiumkode)
+    VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
 
+if ($conn->query($sql)) {
+   echo "<p>Du har registrert klasse <strong>$klassenavn</strong> (klassekode) for studiumkode <strong>$studiumkode<strong>.</p>";
+}   else {
+    echo "<p> Feil ved registrering:" . $conn->error . "</p>";
 }
+$conn->close();
+}
+
 ?>
 
