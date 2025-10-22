@@ -38,7 +38,7 @@
     } else{
         $sqlSelect = "SELECT * FROM student WHERE brukernavn LIKE '$brukernavn';";
         $sqlResult = mysqli_query($db,$sqlSelect) or die ("Ikke mulig å hente data fra database");
-        $antallRader=mysqli_num_rows($sqlResultat);
+        $antallRader = mysqli_num_rows($sqlResult);
           if($antallRader!=0){
             echo "<p style='color:red;'>Brukernavn finnes allerede!</p>";
           }
