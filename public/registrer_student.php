@@ -36,7 +36,7 @@
     if(!$brukernavn || !$fornavn || !$etternavn || !$klassekode) {/*sjekke at hvert felt er fyllt ut - || betyr eller . - !betyr motsatt / ikke fyllt ut noe*/
         echo"<p style='color:red;'>Alle feltene må fylles ut.</p>";
     } else{
-        $sqlSelect = "SELECT * FROM student WHERE brukernavn LIKE $brukernavn";
+        $sqlSelect = "SELECT * FROM student WHERE brukernavn LIKE '$brukernavn';";
         $sqlResult = mysqli_query($db,$sqlSelect) or die ("Ikke mulig å hente data fra database");
         $antallRader=mysqli_num_rows($sqlResultat);
           if($antallRader!=0){
