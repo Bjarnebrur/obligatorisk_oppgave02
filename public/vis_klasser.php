@@ -11,7 +11,7 @@
 
   print ("<h3>Registrerte klasser</h3>");
   print ("<table border=1>");  
-  print ("<tr><th align=left>klassekode</th> <th align=left>klassenavn</th>  <th align=left>studiumkode</th></tr>"); 
+  print ("<tr><th align=left>klassekode</th> <th align=left>klassenavn</th>  <th align=left>studiumkode</th></tr>"); /*tr= table row, th=table height */
  
   for ($r=1;$r<=$antallRader;$r++)
     {
@@ -20,7 +20,7 @@
       $klassenavn=$rad["klassenavn"];    
       $studiumkode=$rad["studiumkode"]; 
 
-      print ("<tr> <td> $klassekode </td> <td> $klassenavn </td> <td> $studiumkode </td> </tr>");
+      print ("<tr> <td> $klassekode </td> <td> $klassenavn </td> <td> $studiumkode </td> </tr>"); /*forløkke, ittererererer igjennom hver rad og printer ut til slutt */
     }
   print ("</table>"); 
 ?>
