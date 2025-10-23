@@ -25,7 +25,7 @@
       $brukernavn=$rad["brukernavn"];       
       $fornavn=$rad["fornavn"];    
       $etternavn=$rad["etternavn"]; 
-      $klassekode=$_post["klassekode"];
+      $klassekode=$rad["klassekode"];
 
       print ("<tr> <td> $brukernavn </td> <td> $fornavn </td> <td> $etternavn </td> <td> $klassekode </td> </tr>"); /*forløkke, ittererererer igjennom hver rad og printer ut til slutt */
     }
