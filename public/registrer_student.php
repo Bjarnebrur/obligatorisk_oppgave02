@@ -1,3 +1,13 @@
+<?php
+ include ("db.php"); /*må flyttes før html skjema */
+  $sqlKlasser = "SELECT klassekode FROM klasse ORDER BY klassekode";
+  $resultatKlasser = mysqli_query($db, $sqlKlasser); /*henter klassekoder fra drop down meny */
+
+  if (!$resultatKlasser) { /*sjekker om sql spørringen fungerte */
+    die("Feil ved henting av klasser: " . mysqli_error($db)); 
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,13 +15,7 @@
 </head>
 <body>
   <h3>Registrer student</h3>
-
-<?php
- include ("db.php"); /*må flyttes før html skjema */
-  $sqlKlasser = "SELECT klassekode FROM klasse ORDER BY klassekode";
-  $resultatKlasser = mysqli_query($db, $sqlKlasser); /*henter klassekoder fra drop down meny */
-?>
-
+  
   <form method="post" action="" id="registrer_student" name="registrer_student">
   brukernavn <input type="text" id="brukernavn" name="brukernavn" required /> <br /> <!--brukernavn skal endres til at hvis det samme, går ikke -->
   fornavn <input type="text" id="fornavn" name="fornavn" required /> <br />
@@ -38,9 +42,6 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
- 
-
- 
 
 $brukernavn = $_POST['brukernavn'];
 $fornavn = $_POST['fornavn'];
