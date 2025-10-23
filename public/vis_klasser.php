@@ -24,4 +24,4 @@
   print ("</table>"); 
 ?>
 
-<p><a href="./index.php">Tilbake til hovedmeny</a></p>
+<p><a href="/app/cadok9842-obligatorisk_oppgave02/public/index.php">Tilbake til hovedmeny</a></p>
