@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Registrer student<title>
+  <title>Registrer student</title>
 </head>
 <body>
   <h3>Registrer student</h3>
+
   <form method="post" action="" id="registrer_student" name="registrer_student">
   brukernavn <input type="text" id="brukernavn" name="brukernavn" required /> <br /> <!--brukernavn skal endres til at hvis det samme, går ikke -->
   fornavn <input type="text" id="fornavn" name="fornavn" required /> <br />
