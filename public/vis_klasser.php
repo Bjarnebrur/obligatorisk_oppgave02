@@ -8,7 +8,6 @@
   
 	
   $antallRader=mysqli_num_rows($sqlResultat);  
-
   print ("<h3>Registrerte klasser</h3>");
   print ("<table border=1>");  
   print ("<tr><th align=left>klassekode</th> <th align=left>klassenavn</th>  <th align=left>studiumkode</th></tr>"); /*tr= table row, th=table height */
@@ -25,4 +24,4 @@
   print ("</table>"); 
 ?>
 
-<p><a href="index.php">Tilbake til hovedmeny</a></p>
+<p><a href="./index.php">Tilbake til hovedmeny</a></p>
