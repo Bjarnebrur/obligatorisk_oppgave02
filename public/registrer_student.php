@@ -15,7 +15,7 @@
 </head>
 <body>
   <h3>Registrer student</h3>
-  
+
   <form method="post" action="" id="registrer_student" name="registrer_student">
   brukernavn <input type="text" id="brukernavn" name="brukernavn" required /> <br /> <!--brukernavn skal endres til at hvis det samme, går ikke -->
   fornavn <input type="text" id="fornavn" name="fornavn" required /> <br />
@@ -25,7 +25,7 @@
   <option value="">Velg klasse</option> <!-- legger til dynmisk listeboks -->
 
 <?php
-    while($rad = mysqli_fetch_assoc($resultat)){
+    while($rad = mysqli_fetch_assoc($resultat)){ /*fyller inn drop down meny */
      echo "<option value='".$rad['klassekode']."'>".$rad['klassekode']."</option>";
   }
 ?>
@@ -36,8 +36,7 @@
 </form>
 
   <p><a href="index.php">Tilbake til hovedmeny</a></p>
-</body>
-</html>
+
 
 <?php
 
@@ -51,6 +50,7 @@ $klassekode = $_POST['klassekode'];
 $sqlHentstudent="SELECT * FROM student WHERE brukernavn='$brukernavn';";
   $sqlResultat=mysqli_query($db, $sqlHentstudent) or die ("ikke mulig &aring; hente data fra databasen");
    $antallRader=mysqli_num_rows($sqlResultat);
+   
   if($antallRader!=0) {
     echo "<p style='color:red;'>Brukernavn finnes allerede!</p>";
   } else {
@@ -64,3 +64,6 @@ $sqlHentstudent="SELECT * FROM student WHERE brukernavn='$brukernavn';";
    
 }
 ?>
+
+</body>
+</html>
