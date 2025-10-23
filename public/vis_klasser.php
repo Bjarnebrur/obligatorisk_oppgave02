@@ -24,3 +24,5 @@
     }
   print ("</table>"); 
 ?>
+
+<p><a href="index.php">Tilbake til hovedmeny</a></p>

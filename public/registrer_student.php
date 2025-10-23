@@ -1,7 +1,7 @@
 <?php
- include ("db.php"); /*må flyttes før html skjema */
-  $sqlKlasser = "SELECT klassekode FROM klasse ORDER BY klassekode";
-  $resultatKlasser = mysqli_query($db, $sqlKlasser); /*henter klassekoder fra drop down meny */
+ include ("db.php"); /*som drop down meny må plasserer FØR html skjema, database-spørring må komme først */
+  $sqlKlasser = "SELECT klassekode FROM klasse ORDER BY klassekode";/*henter klassekoder fra klasser-database */
+  $resultatKlasser = mysqli_query($db, $sqlKlasser); /*utfører spørringen */
 
   if (!$resultatKlasser) { /*sjekker om sql spørringen fungerte */
     die("Feil ved henting av klasser: " . mysqli_error($db)); 
@@ -25,8 +25,8 @@
   <option value="">Velg klasse</option> <!-- legger til dynmisk listeboks -->
 
 <?php
-    while($rad = mysqli_fetch_assoc($resultatKlasser)){ /*while-løkke */
-     echo "<option value='".$rad['klassekode']."'>".$rad['klassekode']."</option>";
+    while($rad = mysqli_fetch_assoc($resultatKlasser)){ /*while-løkke går igjennom hver rad i resultatet, mysqlifetchassoc henter 1 rad som en array*/
+     echo "<option value='".$rad['klassekode']."'>".$rad['klassekode']."</option>";/*henter verdien plassert i klassekode kolonnen */
   }
 ?>
  </select> <!-- må komme rett etter drop down menyen -->
