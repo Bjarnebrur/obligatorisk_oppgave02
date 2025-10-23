@@ -35,7 +35,7 @@ $sqlHentstudent="SELECT * FROM student WHERE brukernavn='$brukernavn';";
   if($antallRader!=0) {
     echo "<p style='color:red;'>Brukernavn finnes allerede!</p>";
   } else {
-    $sqlInsert = "INSERT INTO student (brukernavn, fornavn, etternavn, klasskode)
+    $sqlInsert = "INSERT INTO student (brukernavn, fornavn, etternavn, klassekode)
       VALUES ('$brukernavn', '$fornavn', '$etternavn', '$klassekode')";
 
       mysqli_query($db, $sqlInsert) or die ("ikke mulig &aring; hente data fra databasen");
