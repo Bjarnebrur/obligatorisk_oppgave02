@@ -6,15 +6,31 @@
 <body>
   <h3>Registrer student</h3>
 
+<?php
+ include ("db.php"); /*må flyttes før html skjema */
+  $sqlKlasser = "SELECT klassekode FROM klasse ORDER BY klassekode";
+  $resultatKlasser = mysqli_query($db, $sqlKlasser); /*henter klassekoder fra drop down meny */
+?>
+
   <form method="post" action="" id="registrer_student" name="registrer_student">
   brukernavn <input type="text" id="brukernavn" name="brukernavn" required /> <br /> <!--brukernavn skal endres til at hvis det samme, går ikke -->
   fornavn <input type="text" id="fornavn" name="fornavn" required /> <br />
   etternavn <input type="text" id="etternavn" name="etternavn" required /> <br />
-  klassekode <input type="text" id="klassekode" name="klassekode" required /> <br /> <!-- dynamisk listeboks for valg av kl kode -->
+  klassekode  
+  <select id="klassekode" name="klassekode" required>
+  <option value="">Velg klasse</option> <!-- legger til dynmisk listeboks -->
+
+<?php
+    while($rad = mysqli_fetch_assoc($resultat)){
+     echo "<option value='".$rad['klassekode']."'>".$rad['klassekode']."</option>";
+  }
+?>
+ </select> <!-- må komme rett etter drop down menyen -->
+ <br />
   <input type="submit" value="Fortsett" id="fortsett" name="fortsett" />
   <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
+</form>
 
-  </form>
   <p><a href="index.php">Tilbake til hovedmeny</a></p>
 </body>
 </html>
@@ -22,7 +38,9 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  include ("db.php");
+ 
+
+ 
 
 $brukernavn = $_POST['brukernavn'];
 $fornavn = $_POST['fornavn'];
@@ -42,5 +60,6 @@ $sqlHentstudent="SELECT * FROM student WHERE brukernavn='$brukernavn';";
       echo "<p style='color:green;'>Student er lagret!</p>";     
   }
     mysqli_close($db);
+   
 }
 ?>
