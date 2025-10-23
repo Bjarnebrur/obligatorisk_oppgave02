@@ -1,61 +1,21 @@
 <!DOCTYPE html>
-<html lang="no">
-  <head>
-    <meta charset="UTF-8">
+<html>
+<head>
+  <title>Registrer student<title>
 </head>
 <body>
-  <h3>Register ny student</h3>
-    <form method="post" actio=""> <!-- lager et skjema boi-->
-        <label>Brukenavn:</label><br>
-        <input type="text" name="brukernavn"><br><br>
+  <h3>Registrer student</h3>
+  <form method="post" action="" id="registrer_student" name="registrer_student">
+  brukernavn <input type="text" id="brukernavn" name="brukernavn" required /> <br />
+  fornavn <input type="text" id="fornavn" name="fornavn" required /> <br />
+  etternavn <input type="text" id="etternavn" name="etternavn" required /> <br />
+  klassekode <input type="text" id="klassekode" name="klassekode" required /> <br />
+  <input type="submit" value="Fortsett" id="fortsett" name="fortsett" />
+  <input type="reset" value="Nullstill" id="nullstill" name="nullstill" /> <br />
 
-        <label>Fornavn:</label><br>
-        <input type="text" name="fornavn"><br><br>
-
-        <label>Etternavn:</label><br>
-        <input type="text" name="etternavn"><br><br>
-
-        <label>Klassekode:</label><br>
-        <input type="text" name="klassekode"><br><br>
-
-        <input type="submit" name="submit" value="Registrer student">
-    </form>
-    <p><a href="index.php">Tilbake til hovedmeny</a></p>
-  </table>
+  </form>
+  <p><a href="index.php">Tilbake til hovedmeny</a></p>
 </body>
 </html>
 
-<?php  
-    include ("db.php"); /*kobler opp mot databasen*/
-  if ($_SERVER["REQUEST_METHOD"] == "POST") { /* Denne koden sjekker om vi har sendt inn et skjema */ /**/ 
-    $brukernavn=$_POST["brukernavn"]; /* det bruker skriver blir lagret her*/
-    $fornavn = $_POST["fornavn"]; 
-    $etternavn = $_POST["etternavn"];
-    $klassekode = $_POST["klassekode"];
-    
-    if(!$brukernavn || !$fornavn || !$etternavn || !$klassekode) {/*sjekke at hvert felt er fyllt ut - || betyr eller . - !betyr motsatt / ikke fyllt ut noe*/
-        echo"<p style='color:red;'>Alle feltene må fylles ut.</p>";
-    } else{
-        $sqlSelect = "SELECT * FROM student WHERE brukernavn LIKE '$brukernavn';";
-        $sqlResult = mysqli_query($db,$sqlSelect) or die ("Ikke mulig å hente data fra database");
-        $antallRader = mysqli_num_rows($sqlResult);
-          if($antallRader!=0){
-            echo "<p style='color:red;'>Brukernavn finnes allerede!</p>";
-          }
-            else {
-              $sqlSetning = "INSERT INTO student (brukernavn, fornavn, etternavn, klassekode)
-              VALUES ('$brukernavn', '$fornavn', '$etternavn', '$klassekode')"; /*insert into skriver man hvilken kolonne man skal skrive i, value er verdien som blir satt i kolonna ørn*/
-
-               mysqli_query($db, $sqlSetning) or die("Ikke mulig å registrere student i databasen.");
-
-              echo "<p style='color:green;'>studenten <strong>$fornavn $etternavn</strong> ble registrert!</p>";
-          }
-
-       
-   } 
-     mysqli_close($db);
-}
-
-?>
-
-
+<?php
