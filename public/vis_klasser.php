@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registrerte klasser</title>
+</head>
+<body>
+
 <?php  
 
   include("db.php"); 
@@ -25,3 +32,7 @@
 ?>
 
 <p><a href="/app/cadok9842-obligatorisk_oppgave02/public/index.php">Tilbake til hovedmeny</a></p>
+
+
+</body>
+</html>
