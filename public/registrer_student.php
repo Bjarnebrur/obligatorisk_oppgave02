@@ -25,7 +25,7 @@
   <option value="">Velg klasse</option> <!-- legger til dynmisk listeboks -->
 
 <?php
-    while($rad = mysqli_fetch_assoc($resultat)){ /*fyller inn drop down meny */
+    while($rad = mysqli_fetch_assoc($resultatKlasser)){ /*while-løkke */
      echo "<option value='".$rad['klassekode']."'>".$rad['klassekode']."</option>";
   }
 ?>
@@ -50,7 +50,7 @@ $klassekode = $_POST['klassekode'];
 $sqlHentstudent="SELECT * FROM student WHERE brukernavn='$brukernavn';";
   $sqlResultat=mysqli_query($db, $sqlHentstudent) or die ("ikke mulig &aring; hente data fra databasen");
    $antallRader=mysqli_num_rows($sqlResultat);
-   
+
   if($antallRader!=0) {
     echo "<p style='color:red;'>Brukernavn finnes allerede!</p>";
   } else {
