@@ -3,7 +3,7 @@
 <form method="post" action="" id="slettklasseskjema" name="slettklasseskjema" onSubmit="return bekreft()">
   Klasskode 
   <select id="klassekode" name="klassekode" required>
-    <option value ="">Velg klasse...<(option>)
+    <option value ="">Velg klasse...</option>
       <?php
         include ("db.php");
         $sqlSetning = "SELECT klassekode FROM klasse ORDER BY klassekode";
