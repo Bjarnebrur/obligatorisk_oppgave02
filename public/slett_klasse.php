@@ -64,7 +64,7 @@
               {
                 /*Trygt å slette klassen */
                 $sqlSetning ="DELETE FROM klasse WHERE klassekode=?";
-                $stmt = mysqli_prepare($db. $sqlSetning);
+                $stmt = mysqli_prepare($db, $sqlSetning);
                 mysqli_stmt_bind_param($stmt, "s", $klassekode);
                 mysqli_stmt_execute($stmt);
 
