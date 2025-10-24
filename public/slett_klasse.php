@@ -36,7 +36,7 @@
           /*sjekker at klassen eksisterer */
           $sqlSetning="SELECT * FROM klasse WHERE klassekode=?"; 
           $stmt = mysqli_prepare($db, $sqlSetning);
-          mysqli_stmt_bind_param($db, "s", $sqlSetning);
+          mysqli_stmt_bind_param($stmt, "s", $klassekode);
           mysqli_stmt_execute($stmt);
           $sqlResultat = mysqli_stmt_get_result($stmt);
           $antallRader = mysqli_num_rows($sqlResultat);
