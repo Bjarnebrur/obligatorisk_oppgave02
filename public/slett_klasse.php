@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Slett klasse</title>
-    <script>
+    <script> /*inline javascript, siden det er en liten funksjon ingen vits å lage fil. */
       function bekreft() {
         return confirm("Er du sikker på at du vil slette denne klassen?")
       }
