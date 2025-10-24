@@ -34,7 +34,7 @@
         {
           include("db.php");  
           /*sjekker at klassen eksisterer */
-          $sqlSetning="SELECT * FROM klasse WHERE klassekode='$klassekode';"; 
+          $sqlSetning="SELECT * FROM klasse WHERE klassekode=?"; 
           $stmt = mysqli_prepare($db, $sqlSetning);
           mysqli_stmt_bind_param($db, "s", $sqlSetning);
           mysqli_stmt_execute($stmt);
