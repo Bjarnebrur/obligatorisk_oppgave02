@@ -57,7 +57,7 @@
 
               if ($rad['antall'] > 0)
                 {
-                  print("Kani ikke slette klassen. Det er " . $rad['antall'] . "student(er)) p&aring;meldt denne klassen.<br/>");
+                  print("Kan ikke slette klassen. Det er " . $rad['antall'] . "student(er)) p&aring;meldt denne klassen.<br/>");
                   print("Du m&aring; f&oslash;rst slette eller flytte studentene.");
               }
               else
@@ -77,5 +77,4 @@
         }
     }
 ?> 
-
 <p><a href="index.php">Tilbake til hovedmeny</a></p>
