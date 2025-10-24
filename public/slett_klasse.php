@@ -5,7 +5,7 @@
   <select id="klassekode" name="klassekode" required>
     <option value ="">Velg klasse...</option>
       <?php
-        include ("db.php");
+        include ("db.php"); /*Åpnes 1 gang her for ¨å fylle listeboksen, og 1 gang til i POST_håndtering når skjema sendes inn */
         $sqlSetning = "SELECT klassekode FROM klasse ORDER BY klassekode";
         $resultat = mysqli_query($db, $sqlSetning);
 
@@ -36,7 +36,7 @@
           /*sjekker at klassen eksisterer */
           $sqlSetning="SELECT * FROM klasse WHERE klassekode='$klassekode';"; 
           $stmt = mysqli_prepare($db, $sqlSetning);
-          $mysqli_stmt_bind_param($db, "s", $sqlSetning);
+          mysqli_stmt_bind_param($db, "s", $sqlSetning);
           mysqli_stmt_execute($stmt);
           $sqlResultat = mysqli_stmt_get_result($stmt);
           $antallRader = mysqli_num_rows($sqlResultat);
@@ -50,7 +50,7 @@
               /*sjekker om det eksisterer studenter i klassen */
               $sqlSetning = "SELECT COUNT (*) as antall FROM student WHERE klassekode=?";
               $stmt = mysqli_prepare($db, $sqlSetning);
-              $mysqli_stmt_bind_param($stmt, "s", $klassekode);
+              mysqli_stmt_bind_param($stmt, "s", $klassekode);
               mysqli_stmt_execute($stmt);
               $resultat = mysqli_stmt_get_result($stmt);
               $rad = myqsli_fetch_assoc($result);
