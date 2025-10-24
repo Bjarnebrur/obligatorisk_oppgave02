@@ -1,8 +1,24 @@
 <h3>Slett klasse</h3> <!-- Student må slettes før man kan slette klassekode, om noen studenter er påmeldt klassen -->
 
 <form method="post" action="" id="slettklasseskjema" name="slettklasseskjema" onSubmit="return bekreft()">
-  Klasskode <input type="text" id="klassekode" name="klassekode" required /> <br/>
-  <input type="submit" value="Slett klassekode" name="slettklasseknapp" id="slettklasseKnapp" /> 
+  Klasskode 
+  <select id="klassekode" name="klassekode" required>
+    <option value ="">Velg klasse...<(option>)
+      <?php
+        include ("db.php");
+        $sqlSetning = "SELECT klassekode FROM klasse ORDER BY klassekode";
+        $resultat = mysqli_query($db, $sqlSetning);
+
+        while ($rad = mysqli_fetch_assoc($resultat))
+        {
+          echo "<option value?'" . htmlspecialchars($rad['klassekode']) . "'>" . 
+            htmlspecialchars($rad['klassekode']) . "</option>";
+        }
+      mysqli_close($db);
+      ?>
+     </select>
+    <br/>
+    <input type="submit" value="Slett klassekode" name="slettklasseknapp" id="slettklasseknapp" />
 </form>
 
 <?php
@@ -12,7 +28,7 @@
 	  
 	  if (!$klassekode)
         {
-          print ("klassekode m&aring; mangler");
+          print ("klassekode mangler");
         }
       else
         {
