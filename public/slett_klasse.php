@@ -48,12 +48,12 @@
           else
             {	  
               /*sjekker om det eksisterer studenter i klassen */
-              $sqlSetning = "SELECT COUNT (*) as antall FROM student WHERE klassekode=?";
+              $sqlSetning = "SELECT COUNT(*) as antall FROM student WHERE klassekode=?";
               $stmt = mysqli_prepare($db, $sqlSetning);
               mysqli_stmt_bind_param($stmt, "s", $klassekode);
               mysqli_stmt_execute($stmt);
               $resultat = mysqli_stmt_get_result($stmt);
-              $rad = myqsli_fetch_assoc($result);
+              $rad = mysqli_fetch_assoc($resultat);
 
               if ($rad['antall'] > 0)
                 {
