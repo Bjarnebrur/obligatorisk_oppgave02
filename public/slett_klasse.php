@@ -2,6 +2,11 @@
 <html>
   <head>
     <title>Slett klasse</title>
+    <script>
+      function bekreft() {
+        return confirm("Er du sikker på at du vil slette denne klassen?")
+      }
+    </script>
   </head>
   <body>
 
