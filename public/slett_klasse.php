@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Slett klasse</title>
+  </head>
+  <body>
+
 <h3>Slett klasse</h3> <!-- Student må slettes før man kan slette klassekode, om noen studenter er påmeldt klassen -->
 
 <form method="post" action="" id="slettklasseskjema" name="slettklasseskjema" onSubmit="return bekreft()">
@@ -78,3 +85,6 @@
     }
 ?> 
 <p><a href="index.php">Tilbake til hovedmeny</a></p>
+
+  </body>
+</html>
