@@ -3,8 +3,8 @@
   <head>
     <title>Slett klasse</title>
     <script> /*inline javascript, siden det er en liten funksjon ingen vits å lage fil. */
-      function bekreft() {
-        return confirm("Er du sikker på at du vil slette denne klassen?")
+      function bekreft() { /*funksjon som kjøres når skjema skal sendes inn */
+        return confirm("Er du sikker på at du vil slette denne klassen?") /*Viser bekreftelsesdialog. Return true=send skjema, false=avbryt */
       }
     </script>
   </head>
@@ -12,7 +12,7 @@
 
 <h3>Slett klasse</h3> <!-- Student må slettes før man kan slette klassekode, om noen studenter er påmeldt klassen -->
 
-<form method="post" action="" id="slettklasseskjema" name="slettklasseskjema" onSubmit="return bekreft()">
+<form method="post" action="" id="slettklasseskjema" name="slettklasseskjema" onSubmit="return bekreft()"> <!--kjører bekreft før funksjon før innsending --> 
   Klasskode 
   <select id="klassekode" name="klassekode" required>
     <option value ="">Velg klasse...</option>
