@@ -17,10 +17,13 @@
       else
         {
           include("db.php");  
-
-          $sqlSetning="SELECT * FROM klasse WHERE klassekode='$klassekode';";
-          $sqlResultat=mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; hente data fra databasen");
-          $antallRader=mysqli_num_rows($sqlResultat); 
+          /*sjekker at klassen eksisterer */
+          $sqlSetning="SELECT * FROM klasse WHERE klassekode='$klassekode';"; 
+          $stmt = mysqli_prepare($db, $sqlSetning);
+          $mysqli_stmt_bind_param($db, "s", $sqlSetning);
+          mysqli_stmt_execute($stmt);
+          $sqlResultat = mysqli_stmt_get_result($stmt);
+          $antallRader = mysqli_num_rows($sqlResultat);
 
           if ($antallRader==0) 
             {
@@ -28,11 +31,31 @@
             }
           else
             {	  
-              $sqlSetning="DELETE FROM klasse WHERE klassekode='$klassekode';";
-              mysqli_query($db,$sqlSetning) or die ("ikke mulig &aring; slette data i databasen");
-             
-		
-              print ("F&oslash;lgende klasse er n&aring; slettet: $klassekode  <br />");
+              /*sjekker om det eksisterer studenter i klassen */
+              $sqlSetning = "SELECT COUNT (*) as antall FROM student WHERE klassekode=?";
+              $stmt = mysqli_prepare($db, $sqlSetning);
+              $mysqli_stmt_bind_param($stmt, "s", $klassekode);
+              mysqli_stmt_execute($stmt);
+              $resultat = mysqli_stmt_get_result($stmt);
+              $rad = myqsli_fetch_assoc($result);
+
+              if ($rad['antall'] > 0)
+                {
+                  print("Kani ikke slette klassen. Det er " . $rad['antall'] . "student(er)) p&aring;meldt denne klassen.<br/>");
+                  print("Du m&aring; f&oslash;rst slette eller flytte studentene.");
+              }
+              else
+              {
+                /*Trygt å slette klassen */
+                $sqlSetning ="DELETE FROM klasse WHERE klassekode=?";
+                $stmt = mysqli_prepare($db. $sqlSetning);
+                mysqli_stmt_bind_param($stmt, "s", $klassekode);
+                mysqli_stmt_execute($stmt);
+
+                print("F&oslash;lgende klasse er n&aring; slettet: $klassekode<br />");
+
+              }
+           
             }
             mysqli_close($db);
         }
